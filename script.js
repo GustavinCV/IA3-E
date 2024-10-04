@@ -53,7 +53,7 @@ function mostraPergunta() {
     }
     perguntaAtual = perguntas[posicao];
     caixaPergunta.textContent = perguntaAtual.enunciado;
-    caixaAlternativa.textContent = " ";
+    caixaAlternativa.textContent = "Confira sua resposta";
     mostraAlternativas();
 }
 function mostraAlternativas() {
@@ -66,11 +66,13 @@ function mostraAlternativas() {
 }
 function respostasSelecionadas(opcaoSelecionadas){
     const afirmacoes = opcaoSelecionadas.afirmação;
-    respostas = afirmacoes
+    respostas += afirmacoes +" ";
     posicao ++;
     mostraPergunta();
 }
 function mostraResultado(){
     caixaPergunta.textContent = "Daqui a 10 anos... ";
+    textoResultado.textContent = respostas
+    caixaAlternativa.textContent = "";
 }
 mostraPergunta();
