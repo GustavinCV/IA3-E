@@ -2,10 +2,11 @@ const caixaPrincipal = document.querySelector('.caixa-principal');
 const caixaPergunta = document.querySelector('.caixa-pergunta');
 const caixaAlternativa = document.querySelector('.caixa-alternativa');
 const caixaResultado = document.querySelector('.caixa-resultado');
+const textoResultado = document.querySelector('.texto-resultado');
 
 const perguntas = [//abre a lista de objetos (itens)
     {//abre o item
-        enunciado: "Você gosta da Inteligência Artificial?",
+        enunciado: "Você gosta de Pudim?",
         alternativas: [{
             texto: "Sim",
             afirmação: "Afirmação da alternativa 1"
@@ -17,33 +18,35 @@ const perguntas = [//abre a lista de objetos (itens)
         ]
     },
     {
-        enunciado: "Você considera as IAs um perigo para a humanidade?",
+        enunciado: "Voce ja comeu algum Pudim nosso?",
         alternativas: [{
-            texto: "Quem sabe...",
+            texto: "Claro, o melho da cidade",
             afirmação: "Afirmação da alternativa 1"
         },
         {
-            texto:"Talvez",
+            texto:"Nao  (Deploravel)",
             afirmação:"Afirmação da alternativa 2"
         }
         ]
     },
     {
-        enunciado: "Você usa as IAs no sue dia-a-dia?",
+        enunciado: "Quanto voce pagaria em um lindo pudim como esse?",
         alternativas: [{
-            texto: "Sim",
+            texto: "R$5,00",
             afirmação: "Afirmação da alternativa 1"
         },
         {
-            texto: "Não",
+            texto: "R$10,00",
             afirmação: "Afirmação da alternativa"
         }
         ]
     }
 ]
+
+
 let posicao = 0;
 let perguntaAtual;
-let resposta = ""
+let respostas = "";
 
 
 function mostraPergunta() {
@@ -60,19 +63,19 @@ function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",()=>respostasSelecionadas(alternativa));
+        botaoAlternativas.addEventListener("click",  () => respostasSelecionadas(alternativa));
         caixaAlternativa.appendChild(botaoAlternativas);
     }
 }
-function respostasSelecionadas(opcaoSelecionadas){
-    const afirmacoes = opcaoSelecionadas.afirmação;
-    respostas += afirmacoes +" ";
-    posicao ++;
+function respostasSelecionadas(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmação;
+    respostas += afirmacoes + " ";
+    posicao++;
     mostraPergunta();
 }
 function mostraResultado(){
-    caixaPergunta.textContent = "Daqui a 10 anos... ";
-    textoResultado.textContent = respostas
+    caixaPergunta.textContent = "Confira suas respostas: ";
+    textoResultado.textContent = respostas; 
     caixaAlternativa.textContent = "";
 }
 mostraPergunta();
